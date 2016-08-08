@@ -8,6 +8,7 @@
     <servlet>
         <servlet-name>MainServlet</servlet-name>
         <servlet-class>controller.MainServlet</servlet-class>
+        <!--<jsp-file>/index_.jsp</jsp-file>-->
     </servlet>
 
     <servlet-mapping>

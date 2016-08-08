@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Enumeration;
 
 /**
  * а вот такой невероятный мэин сервлед
@@ -47,14 +48,17 @@ public class MainServlet extends HttpServlet{
 //
 //        request.setAttribute("currentPage", model.getPageNumber(url));
 //        request.setAttribute("numberOfPages", model.getNumberOfPages());
-//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
+//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index_.jsp");
 //
 //        requestDispatcher.forward(request, response);
 
-        HttpSession session = request.getSession(true);
+     // HttpSession session = request.getSession(true);
+
 
         System.out.println("AHAHAHAH!");
-        System.out.println(session);
+     //   Enumeration<String> names = session.getAttributeNames();
+
+
     }
 
 }
