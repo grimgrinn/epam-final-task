@@ -10,6 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("JpaQueryApiInspection")
 public class UserDao implements InterfaceDao<User>{
     public static final Logger MEGALOG = LogManager.getLogger(UserDao.class);
 
@@ -38,7 +39,7 @@ public class UserDao implements InterfaceDao<User>{
                      ResultSet.CONCUR_READ_ONLY
              )
         ){
-            ps.setInt(id, 1);
+            ps.setInt(1, id);
 
             ArrayList<User> users = getUsers(ps);
             if(users.size() > 0){
@@ -49,6 +50,36 @@ public class UserDao implements InterfaceDao<User>{
         }
         return result;
     }
+
+    /**
+     * Пользователь по логину
+     * @param email пользователя
+     * @return пользователь или null
+     */
+    public User getByEmail(final String email) {
+        String select = "SELECT id, email, last_name, first_name, password WHERE email = ? LIMIT 1";
+        ConnectionPool pool = ConnectionPool.getInstance();
+        User result =  null;
+        try (Connection connection = pool.takeConnection();
+             PreparedStatement ps = connection.prepareStatement(
+                     select,
+                     ResultSet.TYPE_SCROLL_INSENSITIVE,
+                     ResultSet.CONCUR_READ_ONLY
+             )
+        ){
+            ps.setString(1, email);
+
+
+            ArrayList<User> users = getUsers(ps);
+            if (users.size() > 0) {
+                result = users.get(0);
+            }
+        } catch (SQLException e) {
+            MEGALOG.error("connection error", e);
+        }
+        return result;
+    }
+
 
     @Override
     public User create(final User item) {

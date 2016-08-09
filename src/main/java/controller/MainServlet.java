@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Enumeration;
 
@@ -51,12 +52,28 @@ public class MainServlet extends HttpServlet{
 //        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index_.jsp");
 //
 //        requestDispatcher.forward(request, response);
+//
 
-     // HttpSession session = request.getSession(true);
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession(false);
 
+        try {
+            if (session.getAttribute("successLogin") != null) {
+                out.println("suces login");
+                response.sendRedirect("/home.jsp");
+                return;
+            } else {
+                out.println("xuy!");
+            }
+        } catch (NullPointerException e) {
+            out.println("There is no session  - " + e);
+            MEGALOG.info("There is no session yet, redirect to login ", e);
+        }
 
-        System.out.println("AHAHAHAH!");
-     //   Enumeration<String> names = session.getAttributeNames();
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+        requestDispatcher.forward(request, response);
+
+        //   Enumeration<String> names = session.getAttributeNames();
 
 
     }

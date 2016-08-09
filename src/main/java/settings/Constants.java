@@ -18,7 +18,7 @@ public final class Constants {
 
     public static final int DEFAULT_GROUP_ID = 1;
 
-    public static final String PASSWORD_SALT = "amt423SAdg23f";
+    public static final String PASSWORD_SALT = "askpm6546543215d";
 
     public static final int PASSWORD_LENGTH_MIN = 5;
     public static final int PASSWORD_LENGTH_MAX = 15;

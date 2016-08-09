@@ -1,22 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 07.08.2016
-  Time: 17:06
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="lang" uri="/WEB-INF/tld/taglib.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Login page</title>
-</head>
-<body>
-
-    <form action="login" method="post">
-        <input type="text" name="username">
-        <input type="password" name="password">
-        <input type="submit"> ${error}
+<c:if test="${sessionScope.user == null}">
+    <div class="login-title">
+        <lang:message text="login.form-name" />
+    </div>
+    <form method="POST" action="/login" class="login-form">
+        <input type="text" name="login" placeholder="<lang:message text="login.login" />" />
+        <input type="password" name="password" placeholder="<lang:message text="login.password" />" />
+        <input type="hidden" name="url" value="<c:out value="${requestScope['javax.servlet.forward.request_uri']}" />" />
+        <input type="submit" name="submit" />
     </form>
-
-</body>
-</html>
+    <div class="signup-link"><a href="/signup"><lang:message text="login.signup" /></a></div>
+</c:if>
+<c:if test="${sessionScope.user != null}">
+    <lang:message text="login.welcome" />, <c:out value="${sessionScope.user.getName()}" />! <br>
+    <a href="/profile"><lang:message text="login.profile" /></a> | <a href="/logout"><lang:message text="login.logout" /></a>
+</c:if>
