@@ -17,20 +17,22 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
+	<div class="wrapper login-wrapper">
         
-	<div class="login-title">
-        <lang:message text="login.form-name" />
-    </div>
-		<form method="POST" action="/login" class="login-form">
-			<input type="text" name="login" placeholder="<lang:message text="login.login" />" />
-			<input type="password" name="password" placeholder="<lang:message text="login.password" />" />
-			<input type="hidden" name="url" value="<c:out value="${requestScope['javax.servlet.forward.request_uri']}" />" />
-			<input type="submit" name="submit" />
-		</form>
-		<div class="signup-link"><a href="/signup"><lang:message text="login.signup" /></a></div>
+		<div class="login-title">
+		   <!-- <lang:message text="login.form-name" /> -->
+		   <h1>Authorization</h1>
+		   
+		</div>
+			<form method="POST" action="/login" class="login-form">
+			<p><input type="text" name="login" placeholder="login"  /></p>
+			<p><input type="password" name="password" placeholder="password" /></p>	
+				<input type="hidden" name="url" value="" />
+				<input type="submit" name="submit" value="Log in"/>
+			</form>
+			<div class="signup-link"><a href="/signup.html">Registration</a></div>
 		
-		
+	</div>	
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>

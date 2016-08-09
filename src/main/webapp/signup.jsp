@@ -24,7 +24,7 @@
         <form method="POST" class="signup">
             <input type="text" name="email" placeholder="<lang:message text="user.email"/>" />
             <input type="text" name="firstName" placeholder="<lang:message text="user.firstname"/>" />
-            <input type="text" name="LastName" placeholder="<lang:message text="user.lastname"/>" />
+            <input type="text" name="lastName" placeholder="<lang:message text="user.lastname"/>" />
             <input type="password" name="password" placeholder="<lang:message text="user.password" />" />
             <input type="submit" name="submit" />
         </form>
