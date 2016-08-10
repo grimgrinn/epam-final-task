@@ -23,5 +23,5 @@ public final class Constants {
     public static final int PASSWORD_LENGTH_MIN = 5;
     public static final int PASSWORD_LENGTH_MAX = 15;
 
-    public static final Languages DEFAULT_LOCALE = Languages.RU;
+    public static final Languages DEFAULT_LOCALE = Languages.EN;
 }

@@ -3,7 +3,6 @@ package languages;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import settings.Constants;
-import languages.Languages;
 import java.util.*;
 
 /**
@@ -21,14 +20,11 @@ public class Messages {
      * Загружает языковые файлы
      */
     public static void reload() {
-        try {
+
             ResourceBundle ru = ResourceBundle.getBundle("languages.text", new Locale("ru", "RU"));
-        } catch (Exception e) {
-            System.out.println("uot tak vot");
-            System.out.println(e);
-        }
+
         ResourceBundle en = ResourceBundle.getBundle("languages.text", new Locale("en", "US"));
-        //files.put(Languages.RU, ru);
+        files.put(Languages.RU, ru);
         files.put(Languages.EN, en);
     }
 

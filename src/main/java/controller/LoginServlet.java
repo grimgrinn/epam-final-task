@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
             }
         }
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
         requestDispatcher.forward(request, response);
     //    User user = UserDao.find(username, password);
 

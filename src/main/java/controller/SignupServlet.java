@@ -32,15 +32,17 @@ public class SignupServlet extends HttpServlet {
         String submit = request.getParameter("submit");
 
         if (submit != null) {
-            String firstName = request.getParameter("firstname");
-            String lastName = request.getParameter("lastname");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             ModelUser model = new ModelUser();
-            ArrayList<StatusUserDataMessages> messages = model.createUser(lastName, firstName, email, password);
+            ArrayList<StatusUserDataMessages> messages = model.createUser(email, lastName, firstName,  password);
             request.setAttribute("messages", messages);
+
+
         }
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/signup.jsp");
         requestDispatcher.forward(request, response);
     }
 }
