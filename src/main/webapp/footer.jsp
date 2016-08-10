@@ -1,4 +1,11 @@
+<%@ taglib prefix="lang" uri="/WEB-INF/tld/taglib.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="footer">
-    <a href="?lang=ru">RU</a> / <a href="?lang=en">EN</a>
+<footer class=" dark">i am a footer</footer>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

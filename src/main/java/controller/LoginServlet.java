@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
         System.out.println("this is iuser from ligin servlet -> " + currentUser);
         if (submit != null && currentUser ==  null) {
             String login = request.getParameter("login");
+            System.out.println("this is login ->" + login);
             String password = request.getParameter("password");
             ModelUser model = new ModelUser();
             User user = model.login(login, password);

@@ -14,9 +14,7 @@ import java.util.ArrayList;
 
 import static model.StatusUserDataMessages.CORRECT_SIGNUP;
 
-/**
- * Created by Admin on 08.08.2016.
- */
+
 @WebServlet("/signup")
 public class SignupServlet extends HttpServlet {
     @Override

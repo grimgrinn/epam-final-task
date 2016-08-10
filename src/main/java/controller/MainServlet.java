@@ -40,7 +40,7 @@ public class MainServlet extends HttpServlet{
                 response.sendRedirect("/profile.jsp");
                 return;
             } else {
-                System.out.println("xuy!");
+                System.out.println("no!");
             }
         } catch (NullPointerException e) {
             System.out.println("There is no session  - " + e);
