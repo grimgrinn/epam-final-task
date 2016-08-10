@@ -5,6 +5,7 @@
     <div class="login-title">
         <lang:message text="login.form-name" />
     </div>
+    <c:if test="${successLogin == false}"><p>Invalid login or password</p></c:if>
     <form method="POST" action="/login" class="login-form">
         <input type="text" name="login" placeholder="<lang:message text="login.login" />" />
         <input type="password" name="password" placeholder="<lang:message text="login.password" />" />
@@ -14,6 +15,6 @@
     <div class="signup-link"><a href="/signup"><lang:message text="login.signup" /></a></div>
 </c:if>
 <c:if test="${sessionScope.user != null}">
-    <lang:message text="login.welcome" />, <c:out value="${sessionScope.user.getName()}" />! <br>
+    <lang:message text="login.welcome" />, <c:out value="${sessionScope.user.getFirstName()}" />! <br>
     <a href="/profile"><lang:message text="login.profile" /></a> | <a href="/logout"><lang:message text="login.logout" /></a>
 </c:if>

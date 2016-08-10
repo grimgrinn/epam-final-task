@@ -1,5 +1,10 @@
 package controller;
 
+import entity.User;
+import model.ModelUser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,12 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import entity.User;
-import model.ModelUser;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.io.IOException;
 
 @WebServlet("/login")
@@ -31,25 +30,24 @@ public class LoginServlet extends HttpServlet {
     }
 
     private void processRequest (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        String username = request.getParameter("username");
-//        String password = request.getParameter("password");
 
         HttpSession session = request.getSession(true);
-
+        System.out.println("me in loginservlet!");
         String submit = request.getParameter("submit");
         User currentUser = (User)session.getAttribute("user");
+
+        System.out.println("this is iuser from ligin servlet -> " + currentUser);
         if (submit != null && currentUser ==  null) {
             String login = request.getParameter("login");
             String password = request.getParameter("password");
             ModelUser model = new ModelUser();
             User user = model.login(login, password);
-
+            System.out.println("this is user form IF -> "+ user);
             //String url = request.getParameter("url");
             if (user != null) {
                 session.setAttribute("user", user);
                 request.setAttribute("successLogin", true);
-                // если юзер авторизуется с любой другой страницы - туда его и возвращаем
-              //  if (!url.equals("/login")) {
+                System.out.println("everything is ok!, go to main servler!");
                     response.sendRedirect("/");
                     return;
                 //}
@@ -61,21 +59,6 @@ public class LoginServlet extends HttpServlet {
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
         requestDispatcher.forward(request, response);
-    //    User user = UserDao.find(username, password);
-
-    /*    if(user != null){
-            request.getSession().setAttribute("user",user);
-            response.sendRedirect("/profile.jsp");
-        } else {
-            request.setAttribute("error","Unknow login, try again");
-            request.getRequestDispatcher("/login.jsp");
-        }
-    */
-
-}
-
-
-
-
+  }
 
 }

@@ -21,7 +21,7 @@
                 <p><lang:message text="${'user.'.concat(message)}"/></p>
             </c:forEach>
 
-        <form method="POST" class="signup">
+        <form method="POST" class="signup"  <c:if test="${successSignUp != null}">style="display:none"</c:if>>
             <input type="text" name="email" placeholder="<lang:message text="user.email"/>" />
             <input type="text" name="firstName" placeholder="<lang:message text="user.firstname"/>" />
             <input type="text" name="lastName" placeholder="<lang:message text="user.lastname"/>" />
@@ -29,6 +29,11 @@
             <input type="submit" name="submit" />
         </form>
         </c:if>
+
+        <c:if test="${successSignUp != null}">
+            <a href="/"><lang:message text="login.login" /></a>
+        </c:if>
+
         <c:if test="${sessionScope.userId != null}">
             <p><lang:message text="signup.already"/></p>
             <a href="/"><lang:message text="profile.title" /></a>

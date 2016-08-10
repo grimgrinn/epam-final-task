@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static model.StatusUserDataMessages.CORRECT_SIGNUP;
+
 /**
  * Created by Admin on 08.08.2016.
  */
@@ -31,17 +33,20 @@ public class SignupServlet extends HttpServlet {
 
         String submit = request.getParameter("submit");
 
-        if (submit != null) {
+            if (submit != null) {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
+
+            System.out.println(firstName + " " + lastName + " " + email + " " + password );
             ModelUser model = new ModelUser();
             ArrayList<StatusUserDataMessages> messages = model.createUser(email, lastName, firstName,  password);
             request.setAttribute("messages", messages);
-
-
-        }
+            if(messages.get(0) == CORRECT_SIGNUP){
+                request.setAttribute("successSignUp", 1);
+            }
+      }
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/signup.jsp");
         requestDispatcher.forward(request, response);
     }

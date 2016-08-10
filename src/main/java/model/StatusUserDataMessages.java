@@ -5,6 +5,7 @@ package model;
  */
 public enum StatusUserDataMessages {
     EMPTY_NAME,
+    EMPTY_LASTNAME,
     EMPTY_LOGIN,
     EMPTY_PASSWORD,
     PASSWORD_ERROR,
@@ -13,5 +14,6 @@ public enum StatusUserDataMessages {
     CORRECT_UPDATE,
     UNKNOWN_ERROR,
     PASSWORD_NOT_MATCH,
-    PASSWORD_INCORRECT
+    PASSWORD_INCORRECT,
+    EMAIL_INCORRECT
 }

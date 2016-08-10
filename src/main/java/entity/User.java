@@ -18,11 +18,17 @@ public class User {
         this.password = password;
     }
 
-    public User(String email, String lastName, String firstName, String password){
+    public User(String email, String firstName, String lastName, String password){
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
         this.password = password;
+    }
+
+    @Override
+    public String toString(){
+        String me = this.firstName + " " +  this.lastName + " " + this.email + " " + this.password;
+        return me;
     }
 
     public int getId() {

@@ -21,7 +21,7 @@ public class Messages {
      */
     public static void reload() {
 
-            ResourceBundle ru = ResourceBundle.getBundle("languages.text", new Locale("ru", "RU"));
+        ResourceBundle ru = ResourceBundle.getBundle("languages.text", new Locale("ru", "RU"));
 
         ResourceBundle en = ResourceBundle.getBundle("languages.text", new Locale("en", "US"));
         files.put(Languages.RU, ru);

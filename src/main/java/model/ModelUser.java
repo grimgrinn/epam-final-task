@@ -10,10 +10,10 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-/**
- * Created by egorov.a on 05.08.2016.
- */
+
 public class ModelUser {
     private static final Logger MEGALOG = LogManager.getLogger(ModelUser.class);
 
@@ -33,7 +33,7 @@ public class ModelUser {
         if (user == null) {
             return null;
         }
-
+        System.out.println("trying to validate password -> "+password + " with this encoded password" + user.getPassword());
         if (!verifyPassword(password, user.getPassword())) {
             return null;
         }
@@ -50,6 +50,8 @@ public class ModelUser {
         if (password == null || encodedPassword == null) {
             return false;
         }
+        System.out.println("this is encodede password -> " + encodedPassword);
+        System.out.println("and this is encrypted passwor dfrom form -> " + encryptPassword(password));
         return encodedPassword.equals(encryptPassword(password));
     }
 
@@ -77,22 +79,38 @@ public class ModelUser {
      * @param password пароль
      * @return сообщения об ошибке или CORRECT_SIGNUP
      */
-    private ArrayList<StatusUserDataMessages> validateSignupUserData(final String firstName, final String email, final String password) {
+    private ArrayList<StatusUserDataMessages> validateSignupUserData(final String firstName,final String lastName, final String email, final String password) {
         ArrayList<StatusUserDataMessages> validate = new ArrayList<>();
-
+        System.out.println("now i am in validatesignupuserdata");
         if (firstName == null || firstName.length() == 0) {
             validate.add(StatusUserDataMessages.EMPTY_NAME);
+
         }
+
+        if (firstName == null || firstName.length() == 0) {
+            validate.add(StatusUserDataMessages.EMPTY_LASTNAME);
+
+        }
+
+        System.out.println(firstName + " is no null");
         if (email == null || email.length() == 0) {
             validate.add(StatusUserDataMessages.EMPTY_LOGIN);
         }
+        System.out.println(email + " is no null");
         if (password == null || password.length() == 0) {
             validate.add(StatusUserDataMessages.EMPTY_PASSWORD);
         } else if (!isValidPassword(password)) {
             validate.add(StatusUserDataMessages.PASSWORD_INCORRECT);
         }
 
+        if(!isValidEmail(email)){
+            validate.add(StatusUserDataMessages.EMAIL_INCORRECT);
+        }
+
+        System.out.println(password + " is not null and ok");
+
         UserDao dao = new UserDao();
+        System.out.println("trying to get user by email - " + email);
         User findLogin = dao.getByEmail(email);
         if (findLogin != null) {
             validate.add(StatusUserDataMessages.LOGIN_EXIST);
@@ -108,6 +126,19 @@ public class ModelUser {
     private boolean isValidPassword(final String password) {
         return !(password.length() < Constants.PASSWORD_LENGTH_MIN || password.length() > Constants.PASSWORD_LENGTH_MAX);
     }
+
+    private boolean isValidEmail(final String email) {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+
+        return matcher.matches();
+    }
+
+
+
     /**
      * Создаёт пользователя
      * @param lastName имя
@@ -117,12 +148,14 @@ public class ModelUser {
      * @return ошибки создания или CORRECT_SIGNUP
      */
     public ArrayList<StatusUserDataMessages> createUser(final String email, final String lastName,final String firstName, final String password) {
-        ArrayList<StatusUserDataMessages> validate = validateSignupUserData(firstName, email, password);
+        System.out.println("trying ti validate user with "+ firstName + " " +  email + " " + password);
+        ArrayList<StatusUserDataMessages> validate = validateSignupUserData(firstName, lastName, email, password);
         if (validate.get(0) == StatusUserDataMessages.CORRECT_SIGNUP) {
             String encodedPassword = encryptPassword(password);
             if (encodedPassword != null) {
                 User user = new User(email, firstName, lastName, encodedPassword);
                 UserDao dao = new UserDao();
+                System.out.println("this is iser - > "+user);
                 dao.create(user);
             } else {
                 validate.add(StatusUserDataMessages.UNKNOWN_ERROR);

@@ -13,6 +13,8 @@
 <body>
 
     Now you are home, beatch!
+    <br>
+    <a href="/logout">Logout!</a>
 
 </body>
 </html>

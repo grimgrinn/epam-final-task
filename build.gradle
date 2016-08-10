@@ -13,7 +13,8 @@ repositories {
 dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.21'
-    compile 'org.apache.logging.log4j:log4j-api:2.6.2'
+    compile 'org.apache.logging.log4j:log4j-api:+'
+    compile 'org.apache.logging.log4j:log4j-core:+'
     compile 'javax.servlet:jstl:1.2'
     compile 'mysql:mysql-connector-java:+'
     compileOnly 'org.projectlombok:lombok:+'
