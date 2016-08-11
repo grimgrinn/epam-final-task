@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 /**
- * вывод все людей.
+ * вывод всех людей.
  */
 
 @WebServlet("/peoples")
@@ -35,7 +35,6 @@ public class PeoplesServlet extends HttpServlet {
 
     private void processRequest (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        String url = request.getRequestURI();
         ModelUser model = new ModelUser();
 
         Collection<User> users = model.getAll();

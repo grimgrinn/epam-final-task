@@ -18,7 +18,7 @@
 			<div class="wall-post-author friend-name"><c:out value="${user.getFullName()}"/></div>
 
 			<div class="friend-pic">
-				<a href="#">
+				<a href="/profile?id=${user.getId()}">
 					<img src="http://placeimg.com/100/100/animals">
 				</a>
 			</div>

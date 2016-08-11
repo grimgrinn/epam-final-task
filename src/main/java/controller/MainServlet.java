@@ -1,5 +1,6 @@
 package controller;
 
+import entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,8 +37,9 @@ public class MainServlet extends HttpServlet{
 
         try {
             if (session.getAttribute("user") != null) {
+                User user = (User) session.getAttribute("user");
                 System.out.println("suces login");
-                response.sendRedirect("/profile.jsp");
+                response.sendRedirect("/profile?id="+user.getId());
                 return;
             } else {
                 System.out.println("no!");

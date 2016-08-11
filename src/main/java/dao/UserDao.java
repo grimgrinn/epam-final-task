@@ -1,14 +1,13 @@
 package dao;
 
-import entity.*;
 import connectionPool.ConnectionPool;
+import entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 @SuppressWarnings("JpaQueryApiInspection")
 public class UserDao implements InterfaceDao<User>{
@@ -49,7 +48,7 @@ public class UserDao implements InterfaceDao<User>{
 
     @Override
     public User getById(final int id){
-        String select = "SELECT id, email, last_name, first_name, password WHERE id = ? LIMIT 1";
+        String select = "SELECT id, email, last_name, first_name, password FROM users WHERE id = ? LIMIT 1";
         ConnectionPool pool = ConnectionPool.getInstance();
         User result = null;
 

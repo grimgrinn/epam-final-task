@@ -5,7 +5,7 @@
 <div class="sidebar content">
     <div class="sidebar-menu-wrapper">
         <ul class="sidebar-menu">
-            <li/><a href="/profile.jsp"><lang:message text="sidebar.home" /></a></li>
+            <li/><a href="/"><lang:message text="sidebar.home" /></a></li>
             <li/><a href="/messages.jsp"><lang:message text="sidebar.message" /></a></li>
             <li/><a href="/friends.jsp"><lang:message text="sidebar.friends" /></a></li>
             <li/><a href="/news.jsp"><lang:message text="sidebar.news" /></a></li>
