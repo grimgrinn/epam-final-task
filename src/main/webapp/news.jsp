@@ -7,7 +7,7 @@
 			<%@ include file="sidebar.jsp"%>
 			
 			<div class="main-stripe">
-			<div class="user-name">Latest News</div>
+			<div class="user-name"><lang:message text="page.news" /></div>
 			
 		
 			

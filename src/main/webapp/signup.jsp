@@ -24,7 +24,7 @@
 	<div class="wrapper login-wrapper">
         
 		<div class="login-title">
-		   <!-- <lang:message text="login.form-name" /> -->
+
 		   <h1><lang:message text="registration.form-name" /></h1>
 		   
 		</div>

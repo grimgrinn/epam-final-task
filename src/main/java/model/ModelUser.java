@@ -10,12 +10,22 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 public class ModelUser {
     private static final Logger MEGALOG = LogManager.getLogger(ModelUser.class);
+
+    /**
+     * Получает все элементы меню
+     * @return список элементов
+     */
+    public Collection<User> getAll() {
+        UserDao dao = new UserDao();
+        return dao.get();
+    }
 
     /**
      * Авторизация

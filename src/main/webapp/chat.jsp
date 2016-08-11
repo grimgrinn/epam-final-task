@@ -7,7 +7,7 @@
 			<%@ include file="sidebar.jsp" %>
 			
 			<div class="main-stripe big-bottom">
-			<div class="user-name">Chat with <span>FriendName</span></div>
+			<div class="user-name"><lang:message text="page.chat" /><span>FriendName</span></div>
 			
 		
 			
@@ -18,7 +18,7 @@
 				<div class="wall-post-author ">
 					<div class="news-pic">
 						<a href="#">
-							<img src="http://placeimg.com/50/50/animals"></img>
+							<img src="http://placeimg.com/50/50/animals">
 						</a>
 					</div>
 			<span class="author-name">Author of post</span>  - 12:43</div>
@@ -31,7 +31,7 @@
 				<div class="wall-post-author ">
 					<div class="news-pic">
 						<a href="#">
-							<img src="http://placeimg.com/50/50/animals"></img>
+							<img src="http://placeimg.com/50/50/animals">
 						</a>
 					</div>
 			<span class="author-name">Author of post</span>  - 12:43</div>
@@ -44,7 +44,7 @@
 				<div class="wall-post-author ">
 					<div class="news-pic">
 						<a href="#">
-							<img src="http://placeimg.com/50/50/animals"></img>
+							<img src="http://placeimg.com/50/50/animals">
 						</a>
 					</div>
 			<span class="author-name">Author of post</span>  - 12:43</div>
@@ -56,7 +56,7 @@
 				<div class="wall-post-author ">
 					<div class="news-pic">
 						<a href="#">
-							<img src="http://placeimg.com/50/50/animals"></img>
+							<img src="http://placeimg.com/50/50/animals">
 						</a>
 					</div>
 			<span class="author-name">Author of post</span>  - 12:43</div>
@@ -68,7 +68,7 @@
 				<div class="wall-post-author ">
 					<div class="news-pic">
 						<a href="#">
-							<img src="http://placeimg.com/50/50/animals"></img>
+							<img src="http://placeimg.com/50/50/animals">
 						</a>
 					</div>
 			<span class="author-name">Author of post</span>  - 12:43</div>

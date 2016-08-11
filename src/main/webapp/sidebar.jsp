@@ -9,6 +9,7 @@
             <li/><a href="/messages.jsp"><lang:message text="sidebar.message" /></a></li>
             <li/><a href="/friends.jsp"><lang:message text="sidebar.friends" /></a></li>
             <li/><a href="/news.jsp"><lang:message text="sidebar.news" /></a></li>
+            <li/><a href="/peoples"><lang:message text="sidebar.peoples" /></a></li>
         </ul>
     </div>
 

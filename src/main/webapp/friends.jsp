@@ -6,7 +6,7 @@
 			<%@ include file="sidebar.jsp" %>
 			
 			<div class="main-stripe">
-			<div class="user-name">Your friends</div>
+			<div class="user-name"><lang:message text="page.friends" /></div>
 			
 		
 			

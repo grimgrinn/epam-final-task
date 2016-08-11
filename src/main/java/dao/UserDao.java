@@ -15,7 +15,28 @@ public class UserDao implements InterfaceDao<User>{
     public static final Logger MEGALOG = LogManager.getLogger(UserDao.class);
 
     @Override
-    public List<User> get() { throw new NotImplementedException();    }
+    public ArrayList<User> get() {
+        String select = "SELECT id, email, last_name, first_name, password FROM users ";
+        ConnectionPool pool = ConnectionPool.getInstance();
+        ArrayList<User> result =  null;
+        try (Connection connection = pool.takeConnection();
+             PreparedStatement ps = connection.prepareStatement(
+                     select,
+                     ResultSet.TYPE_SCROLL_INSENSITIVE,
+                     ResultSet.CONCUR_READ_ONLY
+             )
+        ){
+           System.out.println("this is prepared statement -> "+ ps);
+
+            ArrayList<User> users = getUsers(ps);
+            if (users.size() > 0) {
+                result = users;
+            }
+        } catch (SQLException e) {
+            MEGALOG.error("connection error", e);
+        }
+        return result;
+    }
 
     @Override
     public void update(final User item) { throw new NotImplementedException(); }
