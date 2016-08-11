@@ -15,7 +15,9 @@
 			</div>
 			
 			<div class="user-info">
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
+				${sessionScope.userId} --- ${sessionScope.userId}
+
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
 			</div>
 			
 			<div class="wall-post-new">
@@ -48,9 +50,8 @@
 						</div>
 				<span class="author-name">${post.getAuthor()}</span>  - ${post.getTime()}</div>
 					<div class="wall-post-manage">
-						${post.getUser()}
-						${param.id}
-							<c:if test="${post.getUser() == param.id}">		<a href="#" class="wall-post-delete ">X</a></c:if>
+
+							<c:if test="${post.getUser() == sessionScope.userId || param.id == sessionScope.userId}">		<a href="/deleteWallPost?id=${param.id}&delpost=${post.getId()}" class="wall-post-delete ">X</a></c:if>
 					</div>
 					<div class="wall-post-body">
 							${post.getPost()}

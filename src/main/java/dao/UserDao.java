@@ -64,6 +64,9 @@ public class UserDao implements InterfaceDao<User>{
             ArrayList<User> users = getUsers(ps);
             if(users.size() > 0){
                 result = users.get(0);
+            } else {
+                MEGALOG.error("trying to get user with wrong id");
+                return null;
             }
         } catch (SQLException e) {
             MEGALOG.error("connection error",e);

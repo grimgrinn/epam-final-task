@@ -6,11 +6,22 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
 
 
 public class WallPostModel {
     private static final Logger MEGALOG = LogManager.getLogger(WallPostModel.class);
+
+    public void delete(final int id){
+        WallPostDao dao = new WallPostDao();
+        dao.delete(id);
+    }
+
+    public ArrayList<WallPost> getByUser(final int id){
+        WallPostDao dao = new WallPostDao();
+        return dao.getByUser(id);
+    }
 
     /**
      * Создаёт запись на стене

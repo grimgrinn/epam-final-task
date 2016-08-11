@@ -19,7 +19,16 @@ public class ModelUser {
     private static final Logger MEGALOG = LogManager.getLogger(ModelUser.class);
 
     /**
-     * Получает все элементы меню
+     * Получает пользователя по его айди
+     * @return список элементов
+     */
+    public User getById(final int id){
+        UserDao dao = new UserDao();
+        return dao.getById(id);
+    }
+
+    /**
+     * Получает всех на свете юзеров
      * @return список элементов
      */
     public Collection<User> getAll() {

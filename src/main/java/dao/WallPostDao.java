@@ -86,6 +86,16 @@ public class WallPostDao implements InterfaceDao<WallPost>{
 
     @Override
     public void delete(final int id){
+        String delete = "DELETE FROM walls WHERE id = ?";
+        ConnectionPool pool = ConnectionPool.getInstance();
+        try(Connection connection = pool.takeConnection();
+            PreparedStatement ps = connection.prepareStatement(delete)
+        )  {
+            ps.setInt(1,id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            MEGALOG.error("connection error", e);
+        }
 
     };
 

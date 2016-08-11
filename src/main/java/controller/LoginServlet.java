@@ -47,6 +47,7 @@ public class LoginServlet extends HttpServlet {
             //String url = request.getParameter("url");
             if (user != null) {
                 session.setAttribute("user", user);
+                session.setAttribute("userId", user.getId());
                 request.setAttribute("successLogin", true);
                 System.out.println("everything is ok!, go to main servler!");
                     response.sendRedirect("/");

@@ -30,6 +30,7 @@ public class WallPost {
     }
 
     public WallPost(int id, int user, int wall, String post, Timestamp timeStamp){
+        this.id = id;
         this.user = user;
         this.post = post;
         this.wall = wall;
@@ -37,6 +38,7 @@ public class WallPost {
     }
 
     public WallPost(int id, int user, int wall, String post, String author, Timestamp timeStamp){
+        this.id = id;
         this.user = user;
         this.post = post;
         this.author = author;
@@ -46,13 +48,11 @@ public class WallPost {
 
     @Override
     public String toString(){
-        String me = this.post + " on the wall "+ this.wall;
+        String me = this.id+ " <-id " + this.post + " on the wall "+ this.wall;
         return me;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public int getUser() { return user;   }
     public int getWall() { return wall;   }
