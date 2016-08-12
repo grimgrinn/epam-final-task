@@ -23,7 +23,7 @@
 				</a>
 			</div>
 
-			<div class="wall-post-body">frind info</div>
+			<div class="wall-post-body"><lang:message text="happy.user" /> # ${user.getId()} </div>
 		</div>
 	</c:forEach>
 

@@ -32,24 +32,24 @@ public class LoginServlet extends HttpServlet {
     private void processRequest (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         HttpSession session = request.getSession(true);
-        System.out.println("me in loginservlet!");
+
         String submit = request.getParameter("submit");
         User currentUser = (User)session.getAttribute("user");
 
-        System.out.println("this is iuser from ligin servlet -> " + currentUser);
+
         if (submit != null && currentUser ==  null) {
             String login = request.getParameter("login");
-            System.out.println("this is login ->" + login);
+
             String password = request.getParameter("password");
             ModelUser model = new ModelUser();
             User user = model.login(login, password);
-            System.out.println("this is user form IF -> "+ user);
-            //String url = request.getParameter("url");
+
+
             if (user != null) {
                 session.setAttribute("user", user);
                 session.setAttribute("userId", user.getId());
                 request.setAttribute("successLogin", true);
-                System.out.println("everything is ok!, go to main servler!");
+
                     response.sendRedirect("/");
                     return;
                 //}

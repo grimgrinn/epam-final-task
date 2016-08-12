@@ -38,7 +38,7 @@ public class PeoplesServlet extends HttpServlet {
         ModelUser model = new ModelUser();
 
         Collection<User> users = model.getAll();
-        System.out.println(users);
+
         request.setAttribute("users", users);
 
 

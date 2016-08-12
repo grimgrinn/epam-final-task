@@ -43,8 +43,9 @@
             <lang:message text="login.welcome" />, <c:out value="${sessionScope.user.getFirstName()}" />! <br>
             <a href="/profile"><lang:message text="login.profile" /></a> | <a href="/logout"><lang:message text="login.logout" /></a>
         </c:if>
-	</div>
         <a href="?lang=ru">RU</a> / <a href="?lang=en">EN</a>
+	</div>
+
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>

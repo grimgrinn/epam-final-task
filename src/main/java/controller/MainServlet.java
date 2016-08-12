@@ -31,21 +31,21 @@ public class MainServlet extends HttpServlet{
 
     private void processRequest (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        System.out.println("wea re in main servler now!");
+
 
        HttpSession session = request.getSession(false);
 
         try {
             if (session.getAttribute("user") != null) {
                 User user = (User) session.getAttribute("user");
-                System.out.println("suces login");
+
                 response.sendRedirect("/profile?id="+user.getId());
                 return;
             } else {
-                System.out.println("no!");
+
             }
         } catch (NullPointerException e) {
-            System.out.println("There is no session  - " + e);
+
             MEGALOG.info("There is no session yet, redirect to login ", e);
         }
 

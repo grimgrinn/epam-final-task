@@ -707,6 +707,12 @@ background: lightgrey;
 padding: 4px 10px;
 }
 
+
+.main-title a{
+color:white;
+padding: 4px 10px;
+}
+
 .logout{
 display:inline-block;
 float:right;

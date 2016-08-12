@@ -15,16 +15,14 @@
 			</div>
 			
 			<div class="user-info">
-				${sessionScope.userId} --- ${sessionScope.userId}
-
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
+						<p><lang:message text="happy.user" /> # ${param.id} </p>
 			</div>
 			
 			<div class="wall-post-new">
-			<span style="display:block">Whatsapp?</span>
+			<span style="display:block"><lang:message text="profile.watsap" /></span>
 				<form action="/addwallpost" method="POST">
 
-					<textarea style="resize:none; padding-left: 8px;    padding-top: 4px;" cols="70" rows="4" name="postBody"></textarea>
+					<textarea style="resize:none; padding-left: 8px;    padding-top: 4px;" cols="70" rows="4" name="postBody" required></textarea>
 					<input type="hidden" name="url" value="<c:out value="${requestScope['javax.servlet.forward.request_uri']}" />" />
 					<input type="hidden" name="paramid" value="<c:out value="${param.id}" />" />
 					<input  type = "submit" name="submit" class="wall-post-add send-button" value="<lang:message text="post.add" />" />

@@ -52,9 +52,9 @@
             <p><lang:message text="signup.already"/></p>
             <a href="/"><lang:message text="profile.title" /></a>
         </c:if>
-
-	</div>
         <a href="?lang=ru">RU</a> / <a href="?lang=en">EN</a>
+	</div>
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 

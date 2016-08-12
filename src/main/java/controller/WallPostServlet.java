@@ -34,28 +34,27 @@ public class WallPostServlet extends HttpServlet {
     private void processRequest (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String submit = request.getParameter("submit");
         String url = request.getParameter("url");
-  //      String url = request.getRequestURI();
+
         String paramid = request.getParameter("paramid");
-        System.out.println("this is requested url from walpostservlet -> "+ url);
         String post = request.getParameter("postBody");
         HttpSession session = request.getSession(false);
 
-        System.out.println("now in walpost servlet this is postBody from servlet - > " + post);
+
 
         if(submit != null) {
             boolean succ = false;
             try {
                 User master = (User) session.getAttribute("user");
                 WallPostModel model = new WallPostModel();
-                System.out.println("try to create post! - > " + master.getId() + parseInt(paramid) + post);
+
                 succ = model.createPost(master.getId(), parseInt(paramid), post);
             } catch (NullPointerException e) {
                 MEGALOG.error("session error");
             }
-            System.out.println("this is succ -> " + succ);
+
             if (succ) {
                 request.setAttribute("postSuccess", succ);
-                //return;
+
             }
         }
 
@@ -64,10 +63,10 @@ public class WallPostServlet extends HttpServlet {
             model.delete(parseInt(request.getParameter("delpost")));
         }
 
-      //  System.out.println("this is request uri1111! -> "+url + paramid);
-        System.out.println("щас должно бросить сюда!" + url+"?id="+paramid);
+
+
        response.sendRedirect(url+"?id="+paramid);
-    //   response.sendRedirect(url);
+
     }
 
 }

@@ -25,7 +25,7 @@ public class UserDao implements InterfaceDao<User>{
                      ResultSet.CONCUR_READ_ONLY
              )
         ){
-           System.out.println("this is prepared statement -> "+ ps);
+
 
             ArrayList<User> users = getUsers(ps);
             if (users.size() > 0) {
@@ -91,7 +91,7 @@ public class UserDao implements InterfaceDao<User>{
              )
         ){
             ps.setString(1, email);
-            System.out.println("this is prepared statement -> "+ ps);
+
 
             ArrayList<User> users = getUsers(ps);
             if (users.size() > 0) {
@@ -148,23 +148,21 @@ public class UserDao implements InterfaceDao<User>{
     private ArrayList<User> getUsers(PreparedStatement ps) throws SQLException {
         ArrayList<User> result = new ArrayList<>();
 
-        System.out.println("trying to execute sql query SELECT id, email, last_name, first_name, password WHERE email = ? LIMIT 1 where prepared statement is -> " + ps );
+
         try (ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                System.out.println("now in th try block, this is id, that database returns -> " + id);
+
                 String first_name = rs.getString("first_name");
                 String last_name = rs.getString("last_name");
-                //int groupId = rs.getInt("group_id");
+
                 String password = rs.getString("password");
                 String email = rs.getString("email");
-                //GroupDao groupDao = new GroupDao();
-                //Group group = groupDao.getById(groupId);
                 result.add(new User(id, email, last_name, first_name, password ));
             }
         }
-        System.out.println("if we here everything ok and this is result -> " + result);
+
         return result;
     }
 

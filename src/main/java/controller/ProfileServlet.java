@@ -46,7 +46,7 @@ public class ProfileServlet  extends HttpServlet {
         ArrayList<WallPost> userPosts = null;
 
         if(request.getParameter("id") != null && !request.getParameter("id").isEmpty() ){
-      //if( anotherGuy != null && !anotherGuy.isEmpty() ){
+
           user = model.getById(parseInt(request.getParameter("id")));
      } else {
          HttpSession session = request.getSession(false);
@@ -58,8 +58,6 @@ public class ProfileServlet  extends HttpServlet {
           }
       }
         userPosts = wpModel.getByUser(user.getId());
-        System.out.println("this is user post -> ");
-        System.out.println(userPosts);
         request.setAttribute("user",user);
         request.setAttribute("posts",userPosts);
 

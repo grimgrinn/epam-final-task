@@ -13,11 +13,20 @@ import java.util.Collection;
 public class WallPostModel {
     private static final Logger MEGALOG = LogManager.getLogger(WallPostModel.class);
 
+    /**
+     * удалить запись
+     * @param id
+     */
     public void delete(final int id){
         WallPostDao dao = new WallPostDao();
         dao.delete(id);
     }
 
+    /**
+     * запись по Юзеру
+     * @param id
+     * @return
+     */
     public ArrayList<WallPost> getByUser(final int id){
         WallPostDao dao = new WallPostDao();
         return dao.getByUser(id);
@@ -28,12 +37,12 @@ public class WallPostModel {
      *
      * @param user     пользоатель
      * @param postBody тело поста
-     * @return ошибки создания или CORRECT_ADDPOST
+     * @return истину если все получилось
      */
     public boolean createPost(final int user, final int wall, final String postBody) {
 
         Timestamp sqlDate = new java.sql.Timestamp(new java.util.Date().getTime());
-        System.out.println("try dao with -> " + user +"-"+ wall +"-"+  postBody);
+
         WallPost post = new WallPost(user, wall, postBody, sqlDate);
 
         WallPostDao dao = new WallPostDao();

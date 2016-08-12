@@ -39,7 +39,7 @@ public class User {
     public String getLastName() { return lastName;   }
     public String getFullName() {return firstName + " " + lastName; }
 
-    //public Group getGroup() {        return group;    }
+
 
     public String getPassword() {
         return password;
@@ -54,7 +54,7 @@ public class User {
     }
     public void setLastName(String name) { this.lastName = name;   }
 
-   // public void setGroup(Group group) {        this.group = group;    }
+
 
     public void setPassword(String password) {
         this.password = password;
@@ -64,11 +64,5 @@ public class User {
         this.email = email;
     }
 
-/*
-    /**
-     * Опреледяет имеет ли пользователь админ права
-     * @return статус доступа
-     */
- /*   public boolean isAdminAccess() {        return getGroup().getId() == 2;    }*/
 
 }

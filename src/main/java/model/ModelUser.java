@@ -52,7 +52,7 @@ public class ModelUser {
         if (user == null) {
             return null;
         }
-        System.out.println("trying to validate password -> "+password + " with this encoded password" + user.getPassword());
+
         if (!verifyPassword(password, user.getPassword())) {
             return null;
         }
@@ -69,8 +69,6 @@ public class ModelUser {
         if (password == null || encodedPassword == null) {
             return false;
         }
-        System.out.println("this is encodede password -> " + encodedPassword);
-        System.out.println("and this is encrypted passwor dfrom form -> " + encryptPassword(password));
         return encodedPassword.equals(encryptPassword(password));
     }
 
@@ -100,7 +98,7 @@ public class ModelUser {
      */
     private ArrayList<StatusUserDataMessages> validateSignupUserData(final String firstName,final String lastName, final String email, final String password) {
         ArrayList<StatusUserDataMessages> validate = new ArrayList<>();
-        System.out.println("now i am in validatesignupuserdata");
+
         if (firstName == null || firstName.length() == 0) {
             validate.add(StatusUserDataMessages.EMPTY_NAME);
 
@@ -111,11 +109,11 @@ public class ModelUser {
 
         }
 
-        System.out.println(firstName + " is no null");
+
         if (email == null || email.length() == 0) {
             validate.add(StatusUserDataMessages.EMPTY_LOGIN);
         }
-        System.out.println(email + " is no null");
+
         if (password == null || password.length() == 0) {
             validate.add(StatusUserDataMessages.EMPTY_PASSWORD);
         } else if (!isValidPassword(password)) {
@@ -126,10 +124,10 @@ public class ModelUser {
             validate.add(StatusUserDataMessages.EMAIL_INCORRECT);
         }
 
-        System.out.println(password + " is not null and ok");
+
 
         UserDao dao = new UserDao();
-        System.out.println("trying to get user by email - " + email);
+
         User findLogin = dao.getByEmail(email);
         if (findLogin != null) {
             validate.add(StatusUserDataMessages.LOGIN_EXIST);
@@ -167,14 +165,14 @@ public class ModelUser {
      * @return ошибки создания или CORRECT_SIGNUP
      */
     public ArrayList<StatusUserDataMessages> createUser(final String email, final String lastName,final String firstName, final String password) {
-        System.out.println("trying ti validate user with "+ firstName + " " +  email + " " + password);
+
         ArrayList<StatusUserDataMessages> validate = validateSignupUserData(firstName, lastName, email, password);
         if (validate.get(0) == StatusUserDataMessages.CORRECT_SIGNUP) {
             String encodedPassword = encryptPassword(password);
             if (encodedPassword != null) {
                 User user = new User(email, firstName, lastName, encodedPassword);
                 UserDao dao = new UserDao();
-                System.out.println("this is iser - > "+user);
+
                 dao.create(user);
             } else {
                 validate.add(StatusUserDataMessages.UNKNOWN_ERROR);

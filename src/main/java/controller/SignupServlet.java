@@ -14,7 +14,9 @@ import java.util.ArrayList;
 
 import static model.StatusUserDataMessages.CORRECT_SIGNUP;
 
-
+/**
+ * Регистрация
+ */
 @WebServlet("/signup")
 public class SignupServlet extends HttpServlet {
     @Override
@@ -37,7 +39,7 @@ public class SignupServlet extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
 
-            System.out.println(firstName + " " + lastName + " " + email + " " + password );
+
             ModelUser model = new ModelUser();
             ArrayList<StatusUserDataMessages> messages = model.createUser(email, lastName, firstName,  password);
             request.setAttribute("messages", messages);

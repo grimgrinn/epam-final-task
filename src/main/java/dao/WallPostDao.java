@@ -20,7 +20,11 @@ public class WallPostDao implements InterfaceDao<WallPost>{
         throw new NotImplementedException();
     }
 
-
+    /**
+     * Записи пользователя
+     * @param user
+     * @return
+     */
     public ArrayList<WallPost> getByUser(final int user){
         String select = "SELECT t1.id, t1.user, t1.wall, t1.post, t1.timestamp, CONCAT_WS(' ', t2.first_name, t2.last_name) as author FROM walls t1 LEFT JOIN users t2 ON t2.id=t1.user WHERE t1.wall = ? ORDER BY timestamp DESC";
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -48,6 +52,11 @@ public class WallPostDao implements InterfaceDao<WallPost>{
         return null;
     };
 
+    /**
+     * Создет запись в базе
+     * @param post
+     * @return
+     */
     @Override
     public WallPost create (final WallPost post){
         WallPost newWallPost = null;
@@ -63,7 +72,7 @@ public class WallPostDao implements InterfaceDao<WallPost>{
             ps.setInt(2, post.getWall());
             ps.setString(3, post.getPost());
             ps.setTimestamp(4, post.getTimestamp());
-            System.out.println("trying to exec -> " + ps);
+
             ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
@@ -83,7 +92,10 @@ public class WallPostDao implements InterfaceDao<WallPost>{
 
     };
 
-
+    /**
+     * Удаляет запись
+     * @param id
+     */
     @Override
     public void delete(final int id){
         String delete = "DELETE FROM walls WHERE id = ?";
@@ -98,6 +110,14 @@ public class WallPostDao implements InterfaceDao<WallPost>{
         }
 
     };
+
+    /**
+     * Заполняет коллекцию объектов из PreparedStatement
+     * @param ps
+     * @return
+     * @throws SQLException
+     */
+
 
     private ArrayList<WallPost> getWallPosts(PreparedStatement ps) throws SQLException {
         ArrayList<WallPost> result = new ArrayList<>();
