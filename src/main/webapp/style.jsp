@@ -628,6 +628,14 @@ padding-left: 73px;
 padding-bottom:178px !important;
 }
 
+.wall-post-update{
+    position: absolute;
+    right: 25px;
+    top: 8px;
+    text-decoration: none;
+    color: inherit;
+}
+
 .send-button{
 display: block;
 background: #d5d5d5;

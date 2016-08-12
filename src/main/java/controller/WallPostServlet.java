@@ -2,6 +2,7 @@ package controller;
 
 
 import entity.User;
+import entity.WallPost;
 import model.WallPostModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,7 +17,7 @@ import java.io.IOException;
 
 import static java.lang.Integer.parseInt;
 
-@WebServlet({"/addwallpost", "/deleteWallPost"})
+@WebServlet({"/addwallpost", "/deleteWallPost", "/updatePost"})
 public class WallPostServlet extends HttpServlet {
     private static final Logger MEGALOG = LogManager.getLogger(WallPostServlet.class);
 
@@ -64,6 +65,12 @@ public class WallPostServlet extends HttpServlet {
         if(request.getParameter("delpost") != null) {
             WallPostModel model = new WallPostModel();
             model.delete(parseInt(request.getParameter("delpost")));
+        }
+
+        if(request.getParameter("submitUpdate") != null ){
+
+            WallPostModel model = new WallPostModel();
+            model.update(Integer.parseInt(request.getParameter("postId")), request.getParameter("UpdatePostBody"));
         }
 
 

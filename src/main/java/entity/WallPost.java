@@ -54,6 +54,9 @@ public class WallPost {
 
     public int getId() { return id; }
 
+    public void setPostBody(String NewPost) { this.post = NewPost; }
+
+
     public int getUser() { return user;   }
     public int getWall() { return wall;   }
     public String getPost() { return post;   }

@@ -58,4 +58,19 @@ public class WallPostModel {
         WallPostDao dao = new WallPostDao();
         return dao.getByUser(wall);
     }
+
+    /**
+     * обновляет запись на стене
+     * @param id
+     */
+    public void update(final int id, final String post){
+        WallPost wp = null;
+        WallPostDao dao = new WallPostDao();
+        wp = dao.getById(id);
+
+        wp.setPostBody(post);
+        dao.update(wp);
+    }
+
+
 }

@@ -49,7 +49,28 @@ public class WallPostDao implements InterfaceDao<WallPost>{
 
     @Override
     public WallPost getById(final int id){
-        return null;
+
+
+        String select = "SELECT t1.id, t1.user, t1.wall, t1.post, t1.timestamp, CONCAT_WS(' ', t2.first_name, t2.last_name) as author FROM walls t1 LEFT JOIN users t2 ON t2.id=t1.user WHERE t1.id = ? LIMIT 1";
+        ConnectionPool pool = ConnectionPool.getInstance();
+        WallPost result =  null;
+        try (Connection connection = pool.takeConnection();
+             PreparedStatement ps = connection.prepareStatement(
+                     select,
+                     ResultSet.TYPE_SCROLL_INSENSITIVE,
+                     ResultSet.CONCUR_READ_ONLY
+             )
+        ){
+            ps.setInt(1,id);
+            ArrayList<WallPost> wps = getWallPosts(ps);
+            if (wps.size() > 0) {
+                result = wps.get(0);
+            }
+        } catch (SQLException e) {
+            MEGALOG.error("connection error", e);
+        }
+        return result;
+
     };
 
     /**
@@ -87,9 +108,25 @@ public class WallPostDao implements InterfaceDao<WallPost>{
         return newWallPost;
     };
 
+    /**
+     * Обновляет запись в базе данныых
+     * @param post
+     */
+
     @Override
     public void update(final WallPost post){
-
+        String update = "UPDATE walls set post = ?, timestamp = ?  WHERE id = ?";
+        ConnectionPool pool = ConnectionPool.getInstance();
+        try(Connection connection = pool.takeConnection();
+            PreparedStatement ps = connection.prepareStatement(update)
+        ) {
+            ps.setString(1, post.getPost());
+            ps.setTimestamp(2, post.getTimestamp());
+            ps.setInt(3, post.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     };
 
     /**
