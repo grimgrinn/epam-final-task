@@ -49,7 +49,7 @@
 				<span class="author-name">${post.getAuthor()}</span>  - ${post.getTime()}</div>
 					<div class="wall-post-manage">
 
-							<c:if test="${post.getUser() == sessionScope.userId || param.id == sessionScope.userId}">		<a href="/deleteWallPost?id=${param.id}&delpost=${post.getId()}" class="wall-post-delete ">X</a></c:if>
+							<c:if test="${post.getUser() == sessionScope.userId || param.id == sessionScope.userId}">		<a href="/deleteWallPost?delpost=${post.getId()}&paramid=${param.id}&url=${requestScope['javax.servlet.forward.request_uri']}" class="wall-post-delete ">X</a></c:if>
 					</div>
 					<div class="wall-post-body">
 							${post.getPost()}

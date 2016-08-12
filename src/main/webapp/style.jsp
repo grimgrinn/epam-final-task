@@ -631,7 +631,7 @@ padding-bottom:178px !important;
 .send-button{
 display: block;
 background: #d5d5d5;
-width: 63px;
+width: auto;
 padding: 6px;
 text-align: center;
 text-decoration: none;

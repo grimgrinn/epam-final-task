@@ -27,7 +27,7 @@
     <div class="main-title">
 
         <lang:message text="site.logo" />
-        <a href="?lang=ru">RU</a> / <a href="?lang=en">EN</a>&nbsp;
+        <a href="?lang=ru&id=${param.id}">RU</a> / <a href="?lang=en&id=${param.id}">EN</a>&nbsp;
         <a class="logout" href="/logout"><lang:message text="login.logout" /></a>
     </div>
 </header>

@@ -35,7 +35,10 @@ public class WallPostServlet extends HttpServlet {
         String submit = request.getParameter("submit");
         String url = request.getParameter("url");
 
+
+
         String paramid = request.getParameter("paramid");
+
         String post = request.getParameter("postBody");
         HttpSession session = request.getSession(false);
 
@@ -62,7 +65,6 @@ public class WallPostServlet extends HttpServlet {
             WallPostModel model = new WallPostModel();
             model.delete(parseInt(request.getParameter("delpost")));
         }
-
 
 
        response.sendRedirect(url+"?id="+paramid);
