@@ -11,12 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="<c:url value='/css/normalize.min.css'/>"/>
+    <link rel="stylesheet" href="<c:url value='/css/main.css'/>"/>
 
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<c:url value='js/vendor/modernizr-2.8.3.min.js'/>"></script>
 
-    <%@ include file="style.jsp" %>
+
+
 </head>
 <body>
 <!--[if lt IE 8]>

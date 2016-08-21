@@ -8,7 +8,7 @@
 			<%@ include file="sidebar.jsp" %>
 			
 			<div class="main-stripe">
-			<div class="user-name"><c:out value="${user.getFullName()}"/></div>
+			<div class="user-name"  data-user-id="${user.getId()}"><c:out value="${user.getFullName()}"/></div>
 			
 			<div class="user-pic">
 				<img src="http://placeimg.com/200/300/animals">
@@ -39,17 +39,21 @@
 
 
 			<c:forEach var="post" items="${posts}">
-				<div class="wall-post wall-post-news">
+				<div class="wall-post wall-post-news" data-post-id="${post.getId()}" >
 					<div class="wall-post-author ">
 						<div class="news-pic">
 							<a href="#">
 								<img src="http://placeimg.com/50/50/animals">
 							</a>
 						</div>
-				<span class="author-name">${post.getAuthor()}</span>  - ${post.getTime()}</div>
+						<span class="author-name">${post.getAuthor()}</span>  - ${post.getTime()}</div>
 					<div class="wall-post-manage">
 
-							<c:if test="${post.getUser() == sessionScope.userId || param.id == sessionScope.userId}">		<a href="/deleteWallPost?delpost=${post.getId()}&paramid=${param.id}&url=${requestScope['javax.servlet.forward.request_uri']}" class="wall-post-delete ">X</a> &nbsp; <a class="wall-post-update" href="/update.jsp?updatedPostBody=$${post.getPost()}&postId=${post.getId()}&paramid=${param.id}&url=${requestScope['javax.servlet.forward.request_uri']}">U</a></c:if>
+						<c:if test="${post.getUser() == sessionScope.userId || param.id == sessionScope.userId}">
+							<a href="/deleteWallPost?delpost=${post.getId()}&paramid=${param.id}&url=${requestScope['javax.servlet.forward.request_uri']}" class="wall-post-delete ">X</a>
+							&nbsp;
+							 <a class="wall-post-update wall-post-update-unpushed" href="#">U</a>
+						</c:if>
 					</div>
 					<div class="wall-post-body">
 							${post.getPost()}

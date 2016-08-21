@@ -30,10 +30,17 @@ public class AccessFilter implements Filter {
         boolean loggedIn = session != null && session.getAttribute("user") != null;
         boolean loginRequest = ((HttpServletRequest) servletRequest).getRequestURI().equals(loginURI) || ((HttpServletRequest) servletRequest).getRequestURI().equals(signUpURI);
 
+        if(((HttpServletRequest) servletRequest).getRequestURI().matches(".*(css|jpg|png|gif|js)")){
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
+        }
+
         if (loggedIn || loginRequest) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            ((HttpServletResponse) servletResponse).sendRedirect(loginURI);
+           // ((HttpServletResponse) servletResponse).sendRedirect(loginURI);
+           // filterChain.doFilter(servletRequest, servletResponse);
+            servletRequest.getRequestDispatcher("/login").forward(servletRequest, servletResponse);
         }
 }
 

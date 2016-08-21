@@ -12,11 +12,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-        <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="<c:url value='/css/normalize.min.css'/>"/>
+        <link rel="stylesheet" href="<c:url value='/css/main.css'/>"/>
 
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-        <%@ include file="style.jsp" %>
+        <script src="<c:url value='js/vendor/modernizr-2.8.3.min.js'/>"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -55,10 +54,10 @@
         <a href="?lang=ru">RU</a> / <a href="?lang=en">EN</a>
 	</div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="<c:url value='//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'/>"></script>
+        <script>window.jQuery || document.write('<script src="<c:url value='js/vendor/jquery-1.11.2.min.js'/>"><\/script>')</script>
 
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="<c:url value='js/plugins.js'/>"></script>
+        <script src="<c:url value='js/main.js'/>"></script>
     </body>
 </html>

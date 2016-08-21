@@ -148,6 +148,15 @@ body {
 	color:inherit;
 	    
 }
+
+.wall-post-update{
+    position: absolute;
+    right: 25px;
+    top: 8px;
+    text-decoration: none;
+    color: inherit;
+}
+
 .wall-post:nth-child(even){
 	background:#eaeaea;
 }
