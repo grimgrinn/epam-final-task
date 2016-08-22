@@ -68,6 +68,9 @@ public class WallPostModel {
         WallPostDao dao = new WallPostDao();
         wp = dao.getById(id);
 
+        System.out.println("this is post ->" + post);
+        System.out.println("this is postId ->" + id);
+
         wp.setPostBody(post);
         dao.update(wp);
     }

@@ -115,6 +115,7 @@ public class WallPostDao implements InterfaceDao<WallPost>{
 
     @Override
     public void update(final WallPost post){
+        System.out.println("thi sis post from post dao -> "+post);
         String update = "UPDATE walls set post = ?, timestamp = ?  WHERE id = ?";
         ConnectionPool pool = ConnectionPool.getInstance();
         try(Connection connection = pool.takeConnection();

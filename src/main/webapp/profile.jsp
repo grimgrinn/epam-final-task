@@ -58,6 +58,7 @@
 					<div class="wall-post-body">
 							${post.getPost()}
 					</div>
+					<a class="send-update" href="#" style="display:none">SendUpdate</a>
 				</div>
 			</c:forEach>
 

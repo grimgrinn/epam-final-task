@@ -18,6 +18,9 @@ dependencies {
     compile 'javax.servlet:jstl:1.2'
     compile 'mysql:mysql-connector-java:+'
     compileOnly 'org.projectlombok:lombok:+'
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet:+'
+    compile 'org.glassfish.jersey.media:jersey-media-moxy:+'
+    compile 'com.fasterxml.jackson.core:jackson-databind:+'
 
     testCompile 'junit:junit:+'
 }

@@ -22,6 +22,11 @@ public class WallPost {
         this.timeStamp = timeStamp;
     }
 
+    public WallPost(int user, String post){
+        this.user = user;
+        this.post = post;
+     }
+
     public WallPost(int user, int wall, String post, Timestamp timeStamp){
         this.user = user;
         this.post = post;
