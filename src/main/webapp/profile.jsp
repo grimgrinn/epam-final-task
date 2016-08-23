@@ -50,7 +50,8 @@
 					<div class="wall-post-manage">
 
 						<c:if test="${post.getUser() == sessionScope.userId || param.id == sessionScope.userId}">
-							<a href="/deleteWallPost?delpost=${post.getId()}&paramid=${param.id}&url=${requestScope['javax.servlet.forward.request_uri']}" class="wall-post-delete ">X</a>
+							<%--<a href="/deleteWallPost?delpost=${post.getId()}&paramid=${param.id}&url=${requestScope['javax.servlet.forward.request_uri']}" class="wall-post-delete ">X</a>--%>
+							<a href="#" class="wall-post-delete ">X</a>
 							&nbsp;
 							 <a class="wall-post-update wall-post-update-unpushed" href="#">U</a>
 						</c:if>

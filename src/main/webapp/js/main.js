@@ -7,6 +7,14 @@ $(document).ready(function(){
         id: $(".user-name").data("user-id")
     };
 
+    $('.wall-post-delete ').click(function(){
+        var postId = $(this).parent().parent().data("post-id");
+        console.log("post ot del -> " + postId);
+
+        postDel(postId);
+        return false;
+    });
+
     $('.wall-post-update-unpushed').click(function(){
         $(this).parent().parent().find('.wall-post-body').prop('contenteditable', true);
         $(this).css('pointer-events','none');
@@ -49,6 +57,20 @@ function updatePost(post, postId) {
             myDiv.find('.wall-post-update-unpushed').css('pointer-events','');
             console.log("success");
             console.log(updated);
+        }
+    });
+}
+
+function postDel(id){
+    var divToDel = $('.wall-post[data-post-id='+id+']');
+    $.ajax({
+        url: "/restapi/posts/delete/"+id,
+        type: "DELETE",
+        success: function(deleted){
+                // $(divToDel).detach();
+                divToDel.detach();
+                console.log("success del div ->" + divToDel);
+
         }
     });
 }

@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
@@ -23,39 +24,42 @@ import static tools.RestTools.toJson;
 
 @Path("/posts")
 public class PostResource {
+    final Logger MEGALOG = LogManager.getLogger(PostResource.class);
+
 
     @GET
     @Path("/test")
-    @Produces(APPLICATION_JSON)
-    public Response test(){
+    public Response getTest(){
 
-        String jopa = "test";
-        String json = null;
-        try {
-            json = toJson(jopa);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        String test = "just get test";
+
+        try{
+            String json = toJson(test);
+            return Response.ok(json).build();
+        }catch (JsonProcessingException e){
+            throw new RuntimeException(e);
         }
+    }
 
+    @DELETE
+    @Path("/delete/{id}")
+    public Response deletePostById(@PathParam("id") int id){
+        WallPostModel model = new WallPostModel();
 
-        return Response.ok(json).build();
+        try {
+            MEGALOG.info("trying to DELETE post with postId={}", id);
+            model.delete(id);
+            MEGALOG.info("post with postId={} was deleted", id);
+            return Response.ok().build();
+        } catch (RuntimeException e) {
+            return Response.serverError().entity("Error deleting post").build();
+        }
     }
 
     @PUT
     @Path("/update/{id}")
-//    public Response updatePostById(@PathParam("id") int id, @QueryParam("post") String post) {
     public Response updatePostById(@PathParam("id") int id, @FormParam("post") String post) {
-        final Logger MEGALOG = LogManager.getLogger(WallPostModel.class);
-
-        System.out.println("this is post ->" + post);
-        System.out.println("this is postId ->" + id);
         WallPostModel model = new WallPostModel();
-
-      //  if (!getSessionUserOpt(request.getSession()).isPresent()) {
-      //      log.warn("No user session found. Cannot add like");
-        //    return Response.status(Response.Status.FORBIDDEN)
-        //            .entity("User is not signedup").build();
-        //}
 
         try {
             MEGALOG.info("trying to UPDATE post with postId={}", id);

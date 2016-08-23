@@ -43,7 +43,7 @@
                 <lang:message text="login.welcome" />, <c:out value="${sessionScope.user.getFirstName()}" />! <br>
                 <a href="/profile"><lang:message text="login.profile" /></a> | <a href="/logout"><lang:message text="login.logout" /></a>
             </c:if>
-            <a href="?lang=ru">RU</a> / <a href="?lang=en">EN</a>
+            <%--<a href="?lang=ru">RU</a> / <a href="?lang=en">EN</a>--%>
         </div>
 
 
